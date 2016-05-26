@@ -92,9 +92,13 @@ function calculateTotalPrice(cartItems){
 }
 
 function calculateDiscountPrice(cartItems, totalPrice){
-        return cartItems.reduce(function(a,b){
-                return {subTotal:a.subTotal + b.subTotal};
-            }).subTotal - totalPrice;
+        var discountPrice = 0;
+        var beforePromotionPrice = 0;
+        cartItems.forEach(function(item){
+            beforePromotionPrice += item.subTotal;
+        });
+        discountPrice = beforePromotionPrice - totalPrice;
+        return discountPrice;
 }
 
 function print(cartItems, totalPrice, discountPrice, discountList){
