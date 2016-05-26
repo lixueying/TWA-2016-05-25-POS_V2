@@ -84,17 +84,12 @@ function applyPromotion(subtotalItem, discountList){
 }
 
 function calculateTotalPrice(cartItems){
-    return cartItems.reduce(function(a,b){
-            return {promotedSubtotal:a.promotedSubtotal + b.promotedSubtotal};
-        }).promotedSubtotal;
+    var totalPrice = 0;
+    cartItems.forEach(function(item){
+       totalPrice = totalPrice + item.promotedSubtotal;
+    });
+    return totalPrice;
 }
-
-//function calculateTotalPrice(cartItems){
-//    cartItems.forEach(function(item){
-//       var totalPrice += item.promotedSubtotal;
-//    });
-//    return totalPrice;
-//}
 
 function calculateDiscountPrice(cartItems, totalPrice){
         return cartItems.reduce(function(a,b){
