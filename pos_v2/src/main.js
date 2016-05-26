@@ -113,22 +113,22 @@ function print(cartItems, totalPrice, discountPrice, discountList){
                     minute = dateDigitToString(currentDate.getMinutes()),
                     second = dateDigitToString(currentDate.getSeconds()),
                     formattedDateString = year + '年' + month + '月' + date + '日 ' + hour + ':' + minute + ':' + second;
-         var outString = '***<没钱赚商店>购物清单***\n' +
+         var msg = '***<没钱赚商店>购物清单***\n' +
                      '打印时间：' + formattedDateString + '\n' +
                      '----------------------\n' ;
          cartItems.forEach(function(item) {
-             outString += `名称：${item.name}，数量：${item.count}${item.unit}，单价：${item.price.toFixed(2)}(元)，小计：${item.promotedSubtotal.toFixed(2)}(元)\n`;
+             msg += `名称：${item.name}，数量：${item.count}${item.unit}，单价：${item.price.toFixed(2)}(元)，小计：${item.promotedSubtotal.toFixed(2)}(元)\n`;
            });
-         outString += '----------------------\n' +
+         msg += '----------------------\n' +
                       '挥泪赠送商品：\n';
          discountList.forEach(function(e){
-             outString += `名称：${e.name}，数量：${e.count}${e.unit}\n`;
+             msg += `名称：${e.name}，数量：${e.count}${e.unit}\n`;
          });
-         outString += '----------------------\n' +
+         msg += '----------------------\n' +
                      `总计：${totalPrice.toFixed(2)}(元)\n` +
                      `节省：${discountPrice.toFixed(2)}(元)\n` +
                      '**********************';
-         console.log(outString);
+         console.log(msg);
 }
 function printInventory(inputs){
     var splitedInputs = splitInputs(inputs);
